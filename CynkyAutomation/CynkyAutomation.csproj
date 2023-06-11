@@ -1,0 +1,142 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    
+
+    <IsPackable>false</IsPackable>
+
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+
+    <UserSecretsId>e0598c0d-f940-4174-8ea8-2c511bafc05b</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Enums\**" />
+    <Compile Remove="Features\API\CustomerService\**" />
+    <EmbeddedResource Remove="Enums\**" />
+    <EmbeddedResource Remove="Features\API\CustomerService\**" />
+    <None Remove="Enums\**" />
+    <None Remove="Features\API\CustomerService\**" />
+    <SpecFlowFeatureFiles Remove="Enums\**" />
+    <SpecFlowFeatureFiles Remove="Features\API\CustomerService\**" />
+    <SpecFlowObsoleteCodeBehindFiles Remove="Enums\**" />
+    <SpecFlowObsoleteCodeBehindFiles Remove="Features\API\CustomerService\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BoDi" Version="1.5.0" />
+    <PackageReference Include="CsvHelper" Version="30.0.1" />
+    <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
+    <PackageReference Include="FluentAssertions" Version="6.11.0" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
+    <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.34.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="7.0.0" />
+    <PackageReference Include="Microsoft.ML" Version="2.0.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.2" />
+    <PackageReference Include="MongoDB.Bson" Version="2.19.2" />
+    <PackageReference Include="MongoDB.Driver" Version="2.19.2" />
+    <PackageReference Include="MongoDB.Driver.Core" Version="2.19.2" />
+    <PackageReference Include="MSTest.TestAdapter" Version="3.0.4" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.0.4" />
+    <PackageReference Include="RazorEngine.NetCore" Version="3.1.0" />
+    <PackageReference Include="Selenium.Support" Version="4.10.0" />
+    <PackageReference Include="Selenium.WebDriver" Version="4.10.0" />
+    <PackageReference Include="SpecFlow" Version="3.9.74" />
+    <PackageReference Include="SpecFlow.MsTest" Version="3.9.74" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="CynkyAnalysis">
+      <HintPath>..\..\..\..\..\..\source\repos\CynkyWrappers\CynkyHooks\CynkyAnalysis.dll</HintPath>
+    </Reference>
+    <Reference Include="CynkyHook">
+      <HintPath>CynkyHook.dll</HintPath>
+    </Reference>
+    <Reference Include="CynkyHttp">
+      <HintPath>CynkyHttp.dll</HintPath>
+    </Reference>
+    <Reference Include="CynkyReports">
+      <HintPath>..\..\..\..\..\..\source\repos\CynkyWrappers\CynkyHooks\CynkyReports.dll</HintPath>
+    </Reference>
+    <Reference Include="CynkyUtilities">
+      <HintPath>CynkyUtilities.dll</HintPath>
+    </Reference>
+    <Reference Include="CynkyWrapper">
+      <HintPath>CynkyWrapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Nager.Date">
+      <HintPath>Nager.Date.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="appsettings_uat.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="appsettings_master.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Core.ExtentReports.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Downloads\Placeholder.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Logs\Api\Placeholder.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Logs\Browser\Placeholder.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="MachineLearning.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Reports\Analysis\CynkyModel.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Reports\Analysis\model.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Reports\Results\ScreenShots\Placeholder.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SpecflowHookConfig.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SpecflowHttpWrapper.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Files\CapturedPages\Placeholder.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Files\ExpectedPages\CRMLoginPage.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Files\Postcodes\ukpostcodes.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SeleniumWrapper.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="C:\Users\ChristianDeLaphante\.nuget\packages\mongodb.driver.core\2.12.0\build\../runtimes/win/native/libzstd.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="C:\Users\ChristianDeLaphante\.nuget\packages\mongodb.driver.core\2.12.0\build\../runtimes/win/native/snappy32.dll" />
+    <Content Remove="C:\Users\Personal\.nuget\packages\microsoft.azure.cosmos\3.31.2\contentFiles\any\netstandard2.0\ThirdPartyNotice.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\API\" />
+    <Folder Include="JsonBuilder\BookingService\" />
+  </ItemGroup>  
+</Project>
