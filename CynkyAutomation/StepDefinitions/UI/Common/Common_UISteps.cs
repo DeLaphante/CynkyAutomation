@@ -14,9 +14,9 @@ namespace CynkyAutomation.StepDefinitions.UI.Common
             _Navigation = objectContainer.Resolve<Navigation>();
         }
 
-        [Given(@"customer is on the Orange CRM homepage")]
-        [When(@"customer is on the Orange CRM homepage")]
-        [Then(@"customer is on the Orange CRM homepage")]
+        [Given(@"user is on the Orange CRM homepage")]
+        [When(@"user is on the Orange CRM homepage")]
+        [Then(@"user is on the Orange CRM homepage")]
         public void GivenINavigateToOrangeCRMTheHomePage()
         {
             _Navigation.NavigateToOrangeCRMLandingPage();

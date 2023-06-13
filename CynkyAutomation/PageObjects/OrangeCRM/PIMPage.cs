@@ -16,7 +16,7 @@ namespace CynkyAutomation.PageObjects.OrangeCRM
 
         PageElement DeleteUser_button(string firstname) => new PageElement(_Driver, By.XPath($"//div[contains(normalize-space(),'{firstname}') and contains(@class,'row')]//button[1]"));
         PageElement DeleteUser_button(int rowIndex) => new PageElement(_Driver, By.XPath($"(//div[@class='oxd-table-card'])[{rowIndex}]//button[1]"));
-        PageElement Row_label(string textNotOnColumn) => new PageElement(_Driver, By.XPath($"(//div[@class='oxd-table-card' and not(contains(.,'{textNotOnColumn}'))])[1]//div[3]"));
+        PageElement Row_label(string textNotOnColumn, int index) => new PageElement(_Driver, By.XPath($"(//div[@class='oxd-table-card' and not(contains(.,'{textNotOnColumn}'))])[{index}]//div[3]"));
         PageElement EmployeeRow_label => new PageElement(_Driver, By.XPath($"//div[@class='oxd-table-card']"));
         PageElement FormInput_textbox(string name) => new PageElement(_Driver, By.XPath($"//input[@name=\"{name}\"]"));
 
@@ -42,7 +42,12 @@ namespace CynkyAutomation.PageObjects.OrangeCRM
 
         public string GetFirstNameOfCustomerWithoutEmploymentStatus(string status)
         {
-            return Row_label(status).GetText();
+            int i = 1;
+            while (Row_label(status, i).GetText().Length < 3)
+            {
+                i++;
+            }
+            return Row_label(status, i).GetText();
         }
 
         public void AddEmployee(string firstName, string lastName)

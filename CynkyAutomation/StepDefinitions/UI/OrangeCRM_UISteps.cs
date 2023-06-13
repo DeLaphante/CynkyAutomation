@@ -39,9 +39,9 @@ namespace CynkyAutomation.StepDefinitions.UI
             _CRMLoginPage.Login(crmUser);
         }
 
-        [Given(@"naviagtes to '([^']*)' Page")]
-        [When(@"naviagtes to '([^']*)' Page")]
-        [Then(@"naviagtes to '([^']*)' Page")]
+        [Given(@"user navigates to '([^']*)' Page")]
+        [When(@"user navigates to '([^']*)' Page")]
+        [Then(@"user navigates to '([^']*)' Page")]
         public void WhenNaviagtesToPage(string page)
         {
             if (!_TopNavBar.GetHeader().Equals(page))
