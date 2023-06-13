@@ -40,7 +40,7 @@ namespace CynkyAutomation.PageObjects.OrangeCRM
             return DeleteUser_button(firstname).ElementExists();
         }
 
-        public string GetFirstNameOfCustomerWithoutEmploymentStatus(string status)
+        public string GetFirstNameOfEmployeeWithoutEmploymentStatus(string status)
         {
             int i = 1;
             while (Row_label(status, i).GetText().Length < 3)

@@ -11,8 +11,8 @@ Background: Navigate to home page
 
 Scenario: Delete record on Orange CRM
 	And user navigates to 'PIM' Page
-	When user deletes customer in row without employment status 'Full-Time'
-	Then the customer should not be displayed
+	When user deletes employee in row without employment status 'Full-Time'
+	Then the employee should not be displayed
 
 
 Scenario: Add new employee

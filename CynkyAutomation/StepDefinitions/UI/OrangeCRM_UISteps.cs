@@ -49,25 +49,25 @@ namespace CynkyAutomation.StepDefinitions.UI
         }
 
 
-        [Given(@"user deletes customer in row without employment status '([^']*)'")]
-        [When(@"user deletes customer in row without employment status '([^']*)'")]
-        [Then(@"user deletes customer in row without employment status '([^']*)'")]
-        public void WhenUserDeletesCustomerInRowNumber(string status)
+        [Given(@"user deletes employee in row without employment status '([^']*)'")]
+        [When(@"user deletes employee in row without employment status '([^']*)'")]
+        [Then(@"user deletes employee in row without employment status '([^']*)'")]
+        public void WhenUserDeletesEmployeeInRowNumber(string status)
         {
-            _ScenarioContext.Set<string>(_PIMPage.GetFirstNameOfCustomerWithoutEmploymentStatus(status), "customer");
+            _ScenarioContext.Set<string>(_PIMPage.GetFirstNameOfEmployeeWithoutEmploymentStatus(status), "employee");
             var stopwatch = Stopwatch.StartNew();
             do
             {
-                _PIMPage.DeleteUser(_ScenarioContext.Get<string>("customer"));
-            } while (_PIMPage.IsUserDisplayed(_ScenarioContext.Get<string>("customer")) && stopwatch.ElapsedMilliseconds < 300000);
+                _PIMPage.DeleteUser(_ScenarioContext.Get<string>("employee"));
+            } while (_PIMPage.IsUserDisplayed(_ScenarioContext.Get<string>("employee")) && stopwatch.ElapsedMilliseconds < 300000);
         }
 
-        [Given(@"the customer should not be displayed")]
-        [When(@"the customer should not be displayed")]
-        [Then(@"the customer should not be displayed")]
-        public void ThenTheCustomerShouldNotBeDisplayed()
+        [Given(@"the employee should not be displayed")]
+        [When(@"the employee should not be displayed")]
+        [Then(@"the employee should not be displayed")]
+        public void ThenTheEmployeeShouldNotBeDisplayed()
         {
-            _PIMPage.IsUserDisplayed(_ScenarioContext.Get<string>("customer")).Should().BeFalse();
+            _PIMPage.IsUserDisplayed(_ScenarioContext.Get<string>("employee")).Should().BeFalse();
             _TopNavBar.ClickOnMenuOption("Logout");
             _CRMLoginPage.Login(_ScenarioContext.Get<CrmUser>("crmUser"));
             _SideNavBar.IsOptionDisplayed("PIM").Should().BeTrue();
@@ -78,7 +78,7 @@ namespace CynkyAutomation.StepDefinitions.UI
         [Then(@"user adds a new employee")]
         public void WhenUserAddsANewEmployee()
         {
-            var employee = new { CustomerProfile.Firstname, CustomerProfile.Lastname };
+            var employee = new { EmployeeProfile.Firstname, EmployeeProfile.Lastname };
             _ScenarioContext.Set<string>(employee.Firstname, "firstname");
             _ScenarioContext.Set<string>(employee.Lastname, "lastname");
             _PIMPage.AddEmployee(employee.Firstname, employee.Lastname);
