@@ -43,7 +43,7 @@ namespace CynkyAutomation.PageObjects.OrangeCRM
         public string GetFirstNameOfEmployeeWithoutEmploymentStatus(string status)
         {
             int i = 1;
-            while (Row_label(status, i).GetText().Length < 3)
+            while (Row_label(status, i).GetText().Length < 3 && i < 100)
             {
                 i++;
             }
