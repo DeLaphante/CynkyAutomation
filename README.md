@@ -17,7 +17,7 @@ https://user-images.githubusercontent.com/6398105/216404819-96bdade9-3455-4105-a
 - CynkyReports (Reports Engine)
 - CynkyUtilities (Utilities Engine)
 - Page Object Model design pattern
-- 2 UI automated scenarios (examples)
+- 3 UI automated scenarios (examples)
 - 2 API automated scenarios (examples)
 - Dependency Injection (IoC container)
 - Scalable & Parallel Execution
