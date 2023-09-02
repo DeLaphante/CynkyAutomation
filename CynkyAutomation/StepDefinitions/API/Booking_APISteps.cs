@@ -1,4 +1,3 @@
-using BoDi;
 using CynkyAutomation.EndpointBuilder;
 using CynkyAutomation.JsonBuilder.BookingService;
 using CynkyAutomation.Models.API.Request;
@@ -19,12 +18,12 @@ namespace CynkyAutomation.StepDefinitions.API
         Headers _Headers;
         ScenarioContext _ScenarioContext;
 
-        public BookingStepDefinitions(IObjectContainer objectContainer)
+        public BookingStepDefinitions(ScenarioContext scenarioContext)
         {
-            _Request = objectContainer.Resolve<Request>();
-            _Response = objectContainer.Resolve<Response>();
-            _Headers = objectContainer.Resolve<Headers>();
-            _ScenarioContext = objectContainer.Resolve<ScenarioContext>();
+            _Request = scenarioContext.ScenarioContainer.Resolve<Request>();
+            _Response = scenarioContext.ScenarioContainer.Resolve<Response>();
+            _Headers = scenarioContext.ScenarioContainer.Resolve<Headers>();
+            _ScenarioContext = scenarioContext.ScenarioContainer.Resolve<ScenarioContext>();
         }
 
         [StepDefinition(@"an auth token is received")]

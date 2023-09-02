@@ -1,5 +1,4 @@
-﻿using BoDi;
-using CynkyHook;
+﻿using CynkyHook;
 using CynkyUtilities.ZephyrScale;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Drawing;
@@ -15,14 +14,12 @@ namespace CynkyAutomation.Configuration
         ZephyrClient _ZephyrClient;
         FeatureContext _FeatureContext;
         ScenarioContext _ScenarioContext;
-        IObjectContainer _IObjectContainer;
 
-        Hooks(IObjectContainer objectContainer)
+        Hooks(ScenarioContext scenarioContext)
         {
-            _IObjectContainer = objectContainer;
-            _FeatureContext = objectContainer.Resolve<FeatureContext>();
-            _ScenarioContext = objectContainer.Resolve<ScenarioContext>();
-            _Config = objectContainer.Resolve<Config>();
+            _FeatureContext = scenarioContext.ScenarioContainer.Resolve<FeatureContext>();
+            _ScenarioContext = scenarioContext.ScenarioContainer.Resolve<ScenarioContext>();
+            _Config = scenarioContext.ScenarioContainer.Resolve<Config>();
             _ZephyrClient = new ZephyrClient(ConfigManager.ZephyrBearerToken, ConfigManager.ZephyrServiceUrl, ConfigManager.ZephyrProjectKey);
         }
 
@@ -35,7 +32,7 @@ namespace CynkyAutomation.Configuration
         [BeforeScenario]
         void Launch()
         {
-            _Config.Launch(_IObjectContainer, _FeatureContext, _ScenarioContext,
+            _Config.Launch(_FeatureContext, _ScenarioContext,
                 ConfigManager.RS_User, ConfigManager.RS_Key, new Size());
         }
 

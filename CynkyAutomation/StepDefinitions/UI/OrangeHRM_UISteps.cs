@@ -1,4 +1,3 @@
-using BoDi;
 using CynkyAutomation.Models.UI;
 using CynkyAutomation.PageObjects.OrangeHRM;
 using FluentAssertions;
@@ -18,14 +17,14 @@ namespace CynkyAutomation.StepDefinitions.UI
         SideNavBar _SideNavBar;
         ScenarioContext _ScenarioContext;
 
-        public OrangeHRM_UISteps(IObjectContainer objectContainer)
+        public OrangeHRM_UISteps(ScenarioContext scenarioContext)
         {
-            _MyInfoPage = objectContainer.Resolve<MyInfoPage>();
-            _HRMLoginPage = objectContainer.Resolve<HRMLoginPage>();
-            _PIMPage = objectContainer.Resolve<PIMPage>();
-            _TopNavBar = objectContainer.Resolve<TopNavBar>();
-            _SideNavBar = objectContainer.Resolve<SideNavBar>();
-            _ScenarioContext = objectContainer.Resolve<ScenarioContext>();
+            _MyInfoPage = scenarioContext.ScenarioContainer.Resolve<MyInfoPage>();
+            _HRMLoginPage = scenarioContext.ScenarioContainer.Resolve<HRMLoginPage>();
+            _PIMPage = scenarioContext.ScenarioContainer.Resolve<PIMPage>();
+            _TopNavBar = scenarioContext.ScenarioContainer.Resolve<TopNavBar>();
+            _SideNavBar = scenarioContext.ScenarioContainer.Resolve<SideNavBar>();
+            _ScenarioContext = scenarioContext.ScenarioContainer.Resolve<ScenarioContext>();
         }
 
         [StepDefinition(@"user with the following details logs in:")]

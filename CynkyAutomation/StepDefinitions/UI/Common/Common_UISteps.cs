@@ -1,5 +1,4 @@
-﻿using BoDi;
-using CynkyAutomation.PageObjects.CommonPages;
+﻿using CynkyAutomation.PageObjects.CommonPages;
 using TechTalk.SpecFlow;
 
 namespace CynkyAutomation.StepDefinitions.UI.Common
@@ -9,9 +8,9 @@ namespace CynkyAutomation.StepDefinitions.UI.Common
     {
         Navigation _Navigation;
 
-        public Common_UISteps(IObjectContainer objectContainer)
+        public Common_UISteps(ScenarioContext scenarioContext)
         {
-            _Navigation = objectContainer.Resolve<Navigation>();
+            _Navigation = scenarioContext.ScenarioContainer.Resolve<Navigation>();
         }
 
         [StepDefinition(@"user is on the Orange HRM homepage")]
