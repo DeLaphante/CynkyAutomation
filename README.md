@@ -7,10 +7,14 @@ Eliminate all flaky tests and completely avoid test reruns by using this framewo
 
 This framework can be run on MacOs, Linux or Windows - Just clone or download the solution, build and run 😊
 
+https://user-images.githubusercontent.com/6398105/216404819-96bdade9-3455-4105-a2b2-f218e37574fd.mp4
+
+
 See working examples of other automated sites using CynkyAutomation -> [1CrmCloud](https://github.com/DeLaphante/1CrmCloud) - [LumaShopping](https://github.com/DeLaphante/LumaShopping) - [GoogleYouTube](https://github.com/DeLaphante/GoogleYouTube)
 
 
-https://user-images.githubusercontent.com/6398105/216404819-96bdade9-3455-4105-a2b2-f218e37574fd.mp4
+https://github.com/DeLaphante/CynkyAutomation/assets/6398105/eca80a12-6def-43ed-99d4-776dd8531d36
+
 
 
 *** Components ***
