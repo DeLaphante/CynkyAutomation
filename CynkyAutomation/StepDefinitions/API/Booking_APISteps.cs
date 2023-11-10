@@ -31,10 +31,7 @@ namespace CynkyAutomation.StepDefinitions.API
         {
             var json = new AuthRequest { password = "password123", username = "admin" };
 
-            _Request.SerializeJson(json, _ScenarioContext);
-
-
-            _Request.SendRequestToEndpoint(Method.POST, BookingEndpointBuilder.GetAuthEndPoint());
+            _Request.SendRequestToEndpoint(Method.POST, BookingEndpointBuilder.GetAuthEndPoint(), json);
             _Response.GetResponseBody<AuthResponse>().token.Should().NotBeNullOrEmpty();
             _ScenarioContext.Set<string>(_Response.GetResponseBody<AuthResponse>().token, "token");
         }
@@ -60,10 +57,7 @@ namespace CynkyAutomation.StepDefinitions.API
 
             var json = BookingJsonBuilder.GetCreateBookingData();
 
-            _Request.SerializeJson(json, _ScenarioContext);
-
-
-            _Request.SendRequestToEndpoint(Method.POST, BookingEndpointBuilder.GetBookingEndPoint());
+            _Request.SendRequestToEndpoint(Method.POST, BookingEndpointBuilder.GetBookingEndPoint(), json);
 
             var createBookingResponse = _Response.GetResponseBody<CreateBookingResponse>();
 
