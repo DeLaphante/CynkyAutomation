@@ -31,7 +31,7 @@ namespace CynkyAutomation.StepDefinitions.API
         {
             var json = new AuthRequest { password = "password123", username = "admin" };
 
-            _Request.SendRequestToEndpoint(Method.POST, BookingEndpointBuilder.GetAuthEndPoint(), json);
+            _Request.SendRequest(Method.POST, BookingEndpointBuilder.GetAuthEndPoint(), json);
             _Response.GetResponseBody<AuthResponse>().token.Should().NotBeNullOrEmpty();
             _ScenarioContext.Set<string>(_Response.GetResponseBody<AuthResponse>().token, "token");
         }
@@ -39,7 +39,7 @@ namespace CynkyAutomation.StepDefinitions.API
         [StepDefinition(@"a get request is made to the booking endpoint")]
         public void WhenAGetRequestIsMadeToTheBookingEndpoint()
         {
-            _Request.SendRequestToEndpoint(Method.GET, BookingEndpointBuilder.GetBookingEndPoint());
+            _Request.SendRequest(Method.GET, BookingEndpointBuilder.GetBookingEndPoint());
         }
 
         [StepDefinition(@"the response should contain a list of booking ids")]
@@ -57,7 +57,7 @@ namespace CynkyAutomation.StepDefinitions.API
 
             var json = BookingJsonBuilder.GetCreateBookingData();
 
-            _Request.SendRequestToEndpoint(Method.POST, BookingEndpointBuilder.GetBookingEndPoint(), json);
+            _Request.SendRequest(Method.POST, BookingEndpointBuilder.GetBookingEndPoint(), json);
 
             var createBookingResponse = _Response.GetResponseBody<CreateBookingResponse>();
 
