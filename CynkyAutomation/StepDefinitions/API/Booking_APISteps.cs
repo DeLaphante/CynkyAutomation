@@ -13,16 +13,12 @@ namespace CynkyAutomation.StepDefinitions.API
     [Binding]
     public class BookingStepDefinitions
     {
-        Request _Request;
-        Response _Response;
-        Headers _Headers;
+        CynkyClient _CynkyClient;
         ScenarioContext _ScenarioContext;
 
         public BookingStepDefinitions(ScenarioContext scenarioContext)
         {
-            _Request = scenarioContext.ScenarioContainer.Resolve<Request>();
-            _Response = scenarioContext.ScenarioContainer.Resolve<Response>();
-            _Headers = scenarioContext.ScenarioContainer.Resolve<Headers>();
+            _CynkyClient = scenarioContext.ScenarioContainer.Resolve<CynkyClient>();
             _ScenarioContext = scenarioContext.ScenarioContainer.Resolve<ScenarioContext>();
         }
 
@@ -31,35 +27,35 @@ namespace CynkyAutomation.StepDefinitions.API
         {
             var json = new AuthRequest { password = "password123", username = "admin" };
 
-            _Request.SendRequest(Method.POST, BookingEndpointBuilder.GetAuthEndPoint(), json);
-            _Response.GetResponseBody<AuthResponse>().token.Should().NotBeNullOrEmpty();
-            _ScenarioContext.Set<string>(_Response.GetResponseBody<AuthResponse>().token, "token");
+            _CynkyClient.SendRequest(Method.POST, BookingEndpointBuilder.GetAuthEndPoint(), json);
+            _CynkyClient.GetResponseBody<AuthResponse>().token.Should().NotBeNullOrEmpty();
+            _ScenarioContext.Set<string>(_CynkyClient.GetResponseBody<AuthResponse>().token, "token");
         }
 
         [StepDefinition(@"a get request is made to the booking endpoint")]
         public void WhenAGetRequestIsMadeToTheBookingEndpoint()
         {
-            _Request.SendRequest(Method.GET, BookingEndpointBuilder.GetBookingEndPoint());
+            _CynkyClient.SendRequest(Method.GET, BookingEndpointBuilder.GetBookingEndPoint());
         }
 
         [StepDefinition(@"the response should contain a list of booking ids")]
         public void ThenTheResponseShouldContainAListOfBookingIds()
         {
-            _Response.GetStatusCode().Should().Be(HttpStatusCode.OK);
-            _Response.GetResponseBody<List<GetBookingIdsResponse>>().Should().NotBeNullOrEmpty();
-            _ScenarioContext.Set<int>(_Response.GetResponseBody<List<GetBookingIdsResponse>>().Count, "numberOfIds");
+            _CynkyClient.GetStatusCode().Should().Be(HttpStatusCode.OK);
+            _CynkyClient.GetResponseBody<List<GetBookingIdsResponse>>().Should().NotBeNullOrEmpty();
+            _ScenarioContext.Set<int>(_CynkyClient.GetResponseBody<List<GetBookingIdsResponse>>().Count, "numberOfIds");
         }
 
         [StepDefinition(@"a post request is made to the create booking endpoint")]
         public void WhenAPostRequestIsMadeToTheCreateBookingEndpoint()
         {
-            _Headers.AddHeader("Accept", "application/json");
+            _CynkyClient.AddHeader("Accept", "application/json");
 
             var json = BookingJsonBuilder.GetCreateBookingData();
 
-            _Request.SendRequest(Method.POST, BookingEndpointBuilder.GetBookingEndPoint(), json);
+            _CynkyClient.SendRequest(Method.POST, BookingEndpointBuilder.GetBookingEndPoint(), json);
 
-            var createBookingResponse = _Response.GetResponseBody<CreateBookingResponse>();
+            var createBookingResponse = _CynkyClient.GetResponseBody<CreateBookingResponse>();
 
             _ScenarioContext.Set<int>(createBookingResponse.bookingid, "bookingid");
         }
@@ -67,9 +63,9 @@ namespace CynkyAutomation.StepDefinitions.API
         [StepDefinition(@"the response should contain a booking id")]
         public void ThenTheResponseShouldContainABookingId()
         {
-            _ScenarioContext.Set(_Response.GetResponseHeaders(), "responseHeaders");
-            _Response.GetStatusCode().Should().Be(HttpStatusCode.OK);
-            _Response.GetResponseHeaders().Should().NotBeNullOrEmpty();
+            _ScenarioContext.Set(_CynkyClient.GetResponseHeaders(), "responseHeaders");
+            _CynkyClient.GetStatusCode().Should().Be(HttpStatusCode.OK);
+            _CynkyClient.GetResponseHeaders().Should().NotBeNullOrEmpty();
             _ScenarioContext.Get<int>("bookingid").Should().NotBe(0);
         }
     }
