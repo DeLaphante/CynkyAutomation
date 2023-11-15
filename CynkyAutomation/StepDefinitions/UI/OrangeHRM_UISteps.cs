@@ -65,10 +65,9 @@ namespace CynkyAutomation.StepDefinitions.UI
         [StepDefinition(@"user adds a new employee")]
         public void WhenUserAddsANewEmployee()
         {
-            var employee = new { EmployeeProfile.Firstname, EmployeeProfile.Lastname };
-            _ScenarioContext.Set<string>(employee.Firstname, "firstname");
-            _ScenarioContext.Set<string>(employee.Lastname, "lastname");
-            _PIMPage.AddEmployee(employee.Firstname, employee.Lastname);
+            var employee = new EmployeeProfile();
+            _ScenarioContext.Set<EmployeeProfile>(employee, "employee");
+            _PIMPage.AddEmployee(employee);
             _SideNavBar.ClickOnOption("PIM");
         }
 
@@ -76,8 +75,8 @@ namespace CynkyAutomation.StepDefinitions.UI
         public void ThenTheEmployeeCanBeSeenOnTheList()
         {
             var listOfEmployees = _PIMPage.GetAllEmployees();
-            listOfEmployees.Contains(_ScenarioContext.Get<string>("firstname"));
-            listOfEmployees.Contains(_ScenarioContext.Get<string>("lastname"));
+            listOfEmployees.Contains(_ScenarioContext.Get<EmployeeProfile>("employee").Firstname);
+            listOfEmployees.Contains(_ScenarioContext.Get<EmployeeProfile>("employee").Lastname);
         }
 
         [StepDefinition(@"user updates info")]

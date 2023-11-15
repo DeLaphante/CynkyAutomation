@@ -1,4 +1,5 @@
-﻿using CynkyAutomation.PageObjects.CommonPages;
+﻿using CynkyAutomation.Models.UI;
+using CynkyAutomation.PageObjects.CommonPages;
 using CynkyWrapper;
 using OpenQA.Selenium;
 using System.Collections.Generic;
@@ -44,11 +45,11 @@ namespace CynkyAutomation.PageObjects.OrangeHRM
             return Row_label(status, i).GetText();
         }
 
-        public void AddEmployee(string firstName, string lastName)
+        public void AddEmployee(EmployeeProfile employeeProfile)
         {
             ClickButton("Add");
-            FormInput_textbox("firstName").SendKeys(firstName);
-            FormInput_textbox("lastName").SendKeys(lastName);
+            FormInput_textbox("firstName").SendKeys(employeeProfile.Firstname);
+            FormInput_textbox("lastName").SendKeys(employeeProfile.Lastname);
             ClickButton("Save");
         }
 
