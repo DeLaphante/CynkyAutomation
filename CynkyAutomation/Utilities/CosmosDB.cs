@@ -63,7 +63,7 @@ namespace CynkyAutomation.Utilities
         }
         #endregion
 
-        public static void UpdateItem(string dbName, string collectionName, dynamic jsonItem)
+        public static void UpdateItem(string dbName, string collectionName, object jsonItem)
         {
             using (var _client = new CosmosClient(ConfigManager.AzureCosmosDBURL.GetValueOrDefault(dbName),
                 ConfigManager.AzureCosmosDBSecretKey.GetValueOrDefault(dbName)))
@@ -73,7 +73,7 @@ namespace CynkyAutomation.Utilities
             }
         }
 
-        public static void CreateItem(string dbName, string collectionName, dynamic jsonItem)
+        public static void CreateItem(string dbName, string collectionName, object jsonItem)
         {
             using (var _client = new CosmosClient(ConfigManager.AzureCosmosDBURL.GetValueOrDefault(dbName),
                 ConfigManager.AzureCosmosDBSecretKey.GetValueOrDefault(dbName)))
