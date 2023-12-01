@@ -13,7 +13,7 @@ namespace CynkyAutomation.Utilities
         static string _projectPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
             AppDomain.CurrentDomain.RelativeSearchPath ?? string.Empty);
 
-        static string _testDatafolder = _projectPath + "/TestData/UI/Postcodes/";
+        static string _testDatafolder = _projectPath + "Data/Files/Postcodes/";
 
         public static List<Postcodes> GetUkPostCodes()
         {
