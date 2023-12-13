@@ -18,7 +18,7 @@ https://github.com/DeLaphante/CynkyAutomation/assets/6398105/eca80a12-6def-43ed-
 
 
 *** Components ***
-- CynkyWrapper (Custom Selenium Engine)
+- CynkyDriver (Selenium Engine)
 - CynkyAnalysis (Machine Learning Engine)
 - CynkyHook (Configuration Engine)
 - CynkyHttp (API Engine)
