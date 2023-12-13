@@ -50,7 +50,7 @@
 
   <ItemGroup>
     <Reference Include="CynkyAnalysis">
-      <HintPath>..\..\..\..\..\..\source\repos\CynkyDrivers\CynkyHooks\CynkyAnalysis.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\source\repos\Cynky\CynkyHooks\CynkyAnalysis.dll</HintPath>
     </Reference>
     <Reference Include="CynkyHook">
       <HintPath>CynkyHook.dll</HintPath>
@@ -59,7 +59,7 @@
       <HintPath>CynkyHttp.dll</HintPath>
     </Reference>
     <Reference Include="CynkyReports">
-      <HintPath>..\..\..\..\..\..\source\repos\CynkyDrivers\CynkyHooks\CynkyReports.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\source\repos\Cynky\CynkyHooks\CynkyReports.dll</HintPath>
     </Reference>
     <Reference Include="CynkyUtilities">
       <HintPath>CynkyUtilities.dll</HintPath>
