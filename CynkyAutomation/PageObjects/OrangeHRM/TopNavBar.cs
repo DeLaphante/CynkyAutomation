@@ -1,5 +1,5 @@
 ﻿using CynkyAutomation.PageObjects.CommonPages;
-using CynkyWrapper;
+using CynkyDriver;
 using OpenQA.Selenium;
 
 namespace CynkyAutomation.PageObjects.OrangeHRM
