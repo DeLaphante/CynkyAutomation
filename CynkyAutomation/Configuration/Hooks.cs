@@ -32,8 +32,7 @@ namespace CynkyAutomation.Configuration
         [BeforeScenario]
         void Launch()
         {
-            _Config.Launch(_FeatureContext, _ScenarioContext,
-                ConfigManager.RS_User, ConfigManager.RS_Key, new Size());
+            _Config.Launch(_FeatureContext, _ScenarioContext, ConfigManager.RS_User, ConfigManager.RS_Key);
         }
 
         [BeforeFeature]
