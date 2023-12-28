@@ -1,6 +1,8 @@
 # CynkyAutomation
 [![CodeQL](https://github.com/DeLaphante/CynkyAutomation/actions/workflows/codeql.yml/badge.svg)](https://github.com/DeLaphante/CynkyAutomation/actions/workflows/codeql.yml)
 
+[![.NET](https://github.com/DeLaphante/CynkyAutomation/actions/workflows/dotnet.yml/badge.svg)](https://github.com/DeLaphante/CynkyAutomation/actions/workflows/dotnet.yml)
+
 Powered by Selenium, Specflow and ML.Net with detailed HTML Reporting, Machine Learning Analysis, Automatic Waiting & Logging capabilities - CynkyAutomation framework can handle any website that is built using AJAX, React, AngularJS, Vue.js, Single Page Applications, Salesforce, Dynamics 365 CRM and many more. 
 
 Eliminate all flaky tests and completely avoid test reruns by using this framework within your CI/CD pipeline!
