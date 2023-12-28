@@ -4,6 +4,8 @@
 name: .NET
 
 on:
+  schedule:
+    - cron:  '35 5 * * *'
   push:
     branches: [ "master" ]
   pull_request:
@@ -26,3 +28,7 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - uses: actions/upload-artifact@v4
+      with: 
+        name: Reports
+        path: /Users/runner/work/1CrmCloud/1CrmCloud/DemoAutomation/bin/Debug/net8.0/Reports, /Users/runner/work/1CrmCloud/1CrmCloud/DemoAutomation/bin/Debug/net8.0/Data
