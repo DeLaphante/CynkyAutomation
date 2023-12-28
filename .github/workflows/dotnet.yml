@@ -31,8 +31,4 @@ jobs:
     - uses: actions/upload-artifact@v4
       with: 
         name: Reports
-        path: /Users/runner/work/1CrmCloud/1CrmCloud/DemoAutomation/bin/Debug/net8.0/Reports
-    - uses: actions/upload-artifact@v4
-      with: 
-        name: Data
-        path: /Users/runner/work/1CrmCloud/1CrmCloud/DemoAutomation/bin/Debug/net8.0/Data
+        path: /home/runner/work/CynkyAutomation/CynkyAutomation/CynkyAutomation/bin/Debug/net8.0/Reports, /home/runner/work/CynkyAutomation/CynkyAutomation/CynkyAutomation/bin/Debug/net8.0/Data
