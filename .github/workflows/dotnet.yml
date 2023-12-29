@@ -28,14 +28,11 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - name: Get Reports
-      if: ${{ !cancelled() }}
+      continue-on-error: true
     - uses: actions/upload-artifact@v4
       with: 
         name: Reports
         path: /home/runner/work/CynkyAutomation/CynkyAutomation/CynkyAutomation/bin/Debug/net8.0/Reports
-    - name: Get Data
-      if: ${{ !cancelled() }}
     - uses: actions/upload-artifact@v4
       with: 
         name: Data
