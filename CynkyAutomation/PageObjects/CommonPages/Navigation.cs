@@ -34,7 +34,7 @@ namespace CynkyAutomation.PageObjects.CommonPages
 
         public void NavigateToOrangeHRMLandingPage()
         {
-            _Driver.Navigate().GoToUrl(CynkyConfigManager.SiteUrl);
+            _Driver.Navigate().GoToUrl(CynkyConfigManager.BaseSiteUrl);
         }
 
         void NavigateToUrl(string url)
