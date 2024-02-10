@@ -25,16 +25,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CsvHelper" Version="30.1.0" />
-    <PackageReference Include="Cynky" Version="2.3.9" />
+    <PackageReference Include="CsvHelper" Version="31.0.0" />
+    <PackageReference Include="Cynky" Version="2.3.10" />
     <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
     <PackageReference Include="FluentAssertions" Version="6.12.0" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.58" />
-    <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.38.0" />
+    <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.38.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="8.0.0" />
     <PackageReference Include="Microsoft.ML" Version="3.0.1" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
     <PackageReference Include="MongoDB.Bson" Version="2.23.1" />
     <PackageReference Include="MongoDB.Driver" Version="2.23.1" />
     <PackageReference Include="MongoDB.Driver.Core" Version="2.23.1" />
