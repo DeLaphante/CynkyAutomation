@@ -26,7 +26,7 @@
 
   <ItemGroup>
     <PackageReference Include="CsvHelper" Version="31.0.0" />
-    <PackageReference Include="Cynky" Version="2.3.12" />
+    <PackageReference Include="Cynky" Version="2.3.13" />
     <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
     <PackageReference Include="FluentAssertions" Version="6.12.0" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.59" />
@@ -35,11 +35,11 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="8.0.0" />
     <PackageReference Include="Microsoft.ML" Version="3.0.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
-    <PackageReference Include="MongoDB.Bson" Version="2.23.2" />
-    <PackageReference Include="MongoDB.Driver" Version="2.23.2" />
-    <PackageReference Include="MongoDB.Driver.Core" Version="2.23.2" />
-    <PackageReference Include="MSTest.TestAdapter" Version="3.2.1" />
-    <PackageReference Include="MSTest.TestFramework" Version="3.2.1" />
+    <PackageReference Include="MongoDB.Bson" Version="2.24.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.24.0" />
+    <PackageReference Include="MongoDB.Driver.Core" Version="2.24.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="3.2.2" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.2.2" />
     <PackageReference Include="RazorEngine.NetCore" Version="3.1.0" />
     <PackageReference Include="Selenium.Support" Version="4.18.1" />
     <PackageReference Include="Selenium.WebDriver" Version="4.18.1" />
