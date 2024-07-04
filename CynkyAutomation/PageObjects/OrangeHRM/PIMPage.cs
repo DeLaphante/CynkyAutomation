@@ -32,7 +32,7 @@ namespace CynkyAutomation.PageObjects.OrangeHRM
 
         public bool IsUserDisplayed(string firstname)
         {
-            return DeleteUser_button(firstname).ElementExists();
+            return DeleteUser_button(firstname).IsDisplayed();
         }
 
         public string GetFirstNameOfEmployeeWithoutEmploymentStatus(string status)
