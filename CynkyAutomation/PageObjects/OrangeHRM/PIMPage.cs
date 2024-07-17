@@ -32,7 +32,7 @@ namespace CynkyAutomation.PageObjects.OrangeHRM
 
         public bool IsUserDisplayed(string firstname)
         {
-            return DeleteUser_button(firstname).IsDisplayed();
+            return DeleteUser_button(firstname).ElementExists();
         }
 
         public string GetFirstNameOfEmployeeWithoutEmploymentStatus(string status)
@@ -60,7 +60,7 @@ namespace CynkyAutomation.PageObjects.OrangeHRM
             var employeesList = EmployeeRow_label.GetAllElements();
             foreach (var item in employeesList)
             {
-                employees.Add(item.Text);
+                employees.Add(item.GetText());
             }
             return employees;
         }
