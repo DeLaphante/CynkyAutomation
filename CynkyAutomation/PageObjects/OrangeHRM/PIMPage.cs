@@ -15,7 +15,7 @@ namespace CynkyAutomation.PageObjects.OrangeHRM
 
         #region Locators
 
-        PageElement DeleteUser_button(string firstname) => new PageElement(_Driver, By.XPath($"//div[contains(normalize-space(),'{firstname}') and contains(@class,'row')]//button[1]"));
+        PageElement DeleteUser_button(string firstname) => new PageElement(_Driver, By.XPath($"//div[contains(normalize-space(),'{firstname}') and contains(@class,'row')]//button[i[contains(@class,'trash')]]"));
         PageElement Row_label(string textNotOnColumn, int index) => new PageElement(_Driver, By.XPath($"(//div[@class='oxd-table-card' and not(contains(.,'{textNotOnColumn}'))])[{index}]//div[3]"));
         PageElement EmployeeRow_label => new PageElement(_Driver, By.XPath($"//div[@class='oxd-table-card']"));
         PageElement FormInput_textbox(string name) => new PageElement(_Driver, By.XPath($"//input[@name=\"{name}\"]"));
