@@ -30,7 +30,7 @@ namespace CynkyAutomation.PageObjects.OrangeHRM
             ClickButton("Yes, Delete");
         }
 
-        public bool IsUserDisplayed(string firstname)
+        public bool IsUserPresent(string firstname)
         {
             return DeleteUser_button(firstname).ElementExists();
         }

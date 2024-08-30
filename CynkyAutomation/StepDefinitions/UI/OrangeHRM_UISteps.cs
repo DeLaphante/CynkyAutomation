@@ -50,13 +50,13 @@ namespace CynkyAutomation.StepDefinitions.UI
             do
             {
                 _PIMPage.DeleteUser(_ScenarioContext.Get<string>("employee"));
-            } while (_PIMPage.IsUserDisplayed(_ScenarioContext.Get<string>("employee")) && stopwatch.ElapsedMilliseconds < 300000);
+            } while (_PIMPage.IsUserPresent(_ScenarioContext.Get<string>("employee")) && stopwatch.ElapsedMilliseconds < 300000);
         }
 
         [StepDefinition(@"the employee should not be displayed")]
         public void ThenTheEmployeeShouldNotBeDisplayed()
         {
-            _PIMPage.IsUserDisplayed(_ScenarioContext.Get<string>("employee")).Should().BeFalse();
+            _PIMPage.IsUserPresent(_ScenarioContext.Get<string>("employee")).Should().BeFalse();
             _TopNavBar.ClickOnMenuOption("Logout");
             _HRMLoginPage.Login(_ScenarioContext.Get<CrmUser>("crmUser"));
             _SideNavBar.IsOptionDisplayed("PIM").Should().BeTrue();
