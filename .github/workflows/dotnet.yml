@@ -48,7 +48,7 @@ jobs:
     - name: Check if build output is cached
       id: build-cache-check
       run: |
-          if [ -d "./home/runner/work/CynkyAutomation/CynkyAutomation/CynkyAutomation/bin/Release" ]; then
+          if [ -d "/home/runner/work/CynkyAutomation/CynkyAutomation/CynkyAutomation/bin/Release" ]; then
               echo "build=false" >> $GITHUB_ENV
           else
             echo "build=true" >> $GITHUB_ENV
