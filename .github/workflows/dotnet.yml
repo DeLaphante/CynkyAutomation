@@ -46,19 +46,19 @@ jobs:
       run: dotnet restore
 
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore --configuration Release
 
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity normal --configuration Release
 
     - uses: actions/upload-artifact@v4
       if: always()
       with: 
         name: Reports
-        path: /home/runner/work/CynkyAutomation/CynkyAutomation/CynkyAutomation/bin/Debug/net8.0/Reports
+        path: /home/runner/work/CynkyAutomation/CynkyAutomation/CynkyAutomation/bin/Release/net8.0/Reports
 
     - uses: actions/upload-artifact@v4
       with: 
         name: Data
-        path: /home/runner/work/CynkyAutomation/CynkyAutomation/CynkyAutomation/bin/Debug/net8.0/Data
+        path: /home/runner/work/CynkyAutomation/CynkyAutomation/CynkyAutomation/bin/Release/net8.0/Data
 
