@@ -55,7 +55,7 @@ jobs:
           fi
 
     - name: Build
-      if: env.build == 'true'
+      if: env.build == 'false'
       run: dotnet build --no-restore --configuration Release
 
     - name: Test
