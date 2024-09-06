@@ -43,9 +43,19 @@ jobs:
             build-${{ runner.os }}-
             
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore --use-current-runtime
+      
+    - name: Check if build output is cached
+      id: build-cache-check
+      run: |
+          if [ -d "./home/runner/work/CynkyAutomation/CynkyAutomation/CynkyAutomation/bin/Release" ]; then
+              echo "build=false" >> $GITHUB_ENV
+          else
+            echo "build=true" >> $GITHUB_ENV
+          fi
 
     - name: Build
+      if: env.build == 'true'
       run: dotnet build --no-restore --configuration Release
 
     - name: Test
