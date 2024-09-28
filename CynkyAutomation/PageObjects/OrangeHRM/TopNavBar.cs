@@ -6,10 +6,7 @@ namespace CynkyAutomation.PageObjects.OrangeHRM
 {
     public class TopNavBar : Navigation
     {
-        public TopNavBar(IWebDriver driver) : base(driver)
-        {
-            _Driver = driver;
-        }
+        public TopNavBar(IWebDriver driver) : base(driver) { }
 
         #region Locators
 

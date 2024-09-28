@@ -8,10 +8,7 @@ namespace CynkyAutomation.PageObjects.OrangeHRM
 {
     public class PIMPage : Navigation
     {
-        public PIMPage(IWebDriver driver) : base(driver)
-        {
-            _Driver = driver;
-        }
+        public PIMPage(IWebDriver driver) : base(driver) { }
 
         #region Locators
 

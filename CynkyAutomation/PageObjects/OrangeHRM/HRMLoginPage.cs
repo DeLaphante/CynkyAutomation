@@ -7,10 +7,7 @@ namespace CynkyAutomation.PageObjects.OrangeHRM
 {
     public class HRMLoginPage : Navigation
     {
-        public HRMLoginPage(IWebDriver driver) : base(driver)
-        {
-            _Driver = driver;
-        }
+        public HRMLoginPage(IWebDriver driver) : base(driver) { }
 
         #region Locators
 
