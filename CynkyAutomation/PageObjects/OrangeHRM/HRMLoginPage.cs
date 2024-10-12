@@ -13,6 +13,7 @@ namespace CynkyAutomation.PageObjects.OrangeHRM
 
         PageElement Username_textbox => new PageElement(_Driver, By.XPath("//input[@name='username']"));
         PageElement Password_textbox => new PageElement(_Driver, By.XPath("//input[@name='password']"));
+        PageElement Login_button => new PageElement(_Driver, By.XPath("//*[@type='submit']"));
 
         #endregion
 
@@ -22,7 +23,7 @@ namespace CynkyAutomation.PageObjects.OrangeHRM
         {
             Username_textbox.SendKeys(crmUser.Username);
             Password_textbox.SendKeys(crmUser.Password);
-            ClickButton("Login");
+            Login_button.Click();
         }
 
         #endregion
