@@ -9,6 +9,8 @@
     <RunPostBuildEvent>Always</RunPostBuildEvent>
 
     <UserSecretsId>e0598c0d-f940-4174-8ea8-2c511bafc05b</UserSecretsId>
+    <ServerGarbageCollection>true</ServerGarbageCollection>
+    <GarbageCollectionAdaptationMode>1</GarbageCollectionAdaptationMode>
   </PropertyGroup>
 
   <ItemGroup>
