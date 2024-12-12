@@ -25,7 +25,7 @@ namespace CynkyAutomation.PageObjects.OrangeHRM
 
         public string GetTextFromInputField(string fieldName)
         {
-            return InputField_textbox(fieldName).GetDomAttribute("value");
+            return InputField_textbox(fieldName).GetDomProperty("value");
         }
 
         #endregion
