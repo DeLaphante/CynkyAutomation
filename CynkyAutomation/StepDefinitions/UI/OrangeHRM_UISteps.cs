@@ -2,8 +2,7 @@ using CynkyAutomation.Models.UI;
 using CynkyAutomation.PageObjects.OrangeHRM;
 using FluentAssertions;
 using System.Diagnostics;
-using TechTalk.SpecFlow;
-using TechTalk.SpecFlow.Assist;
+using Reqnroll;
 
 namespace CynkyAutomation.StepDefinitions.UI
 {

@@ -6,7 +6,7 @@ using CynkyHttp;
 using FluentAssertions;
 using System.Collections.Generic;
 using System.Net;
-using TechTalk.SpecFlow;
+using Reqnroll;
 
 namespace CynkyAutomation.StepDefinitions.API
 {

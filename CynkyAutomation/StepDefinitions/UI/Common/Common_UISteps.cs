@@ -1,5 +1,5 @@
 ﻿using CynkyAutomation.PageObjects.CommonPages;
-using TechTalk.SpecFlow;
+using Reqnroll;
 
 namespace CynkyAutomation.StepDefinitions.UI.Common
 {
