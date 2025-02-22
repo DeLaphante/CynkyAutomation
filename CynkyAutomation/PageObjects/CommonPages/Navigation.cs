@@ -18,8 +18,7 @@ namespace CynkyAutomation.PageObjects.CommonPages
 
         PageElement AcceptCookie_button => new PageElement(_Driver, By.Id("consent_prompt_submit"));
         PageElement NavigateTo(string page) => new PageElement(_Driver, By.PartialLinkText($"{page}"));
-        PageElement Button(string text, int index) => new PageElement(_Driver, By.XPath($"(//button[translate(normalize-space(.), " +
-            $"'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')=\"{text.ToLower()}\"])[{index}]"));
+        PageElement Button(string text, int index) => new PageElement(_Driver, By.XPath($"(//button[translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')=\"{text.ToLower()}\"]|//input[@value=\"{text}\"]|//a[not(ancestor::div[contains(@class,'banner')]) and translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')=\"{text.ToLower()}\" or contains(@class,\"{text}\")]|//a[not(ancestor::div[contains(@class,'banner')]) and span[translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')=\"{text.ToLower()}\"]]|//button[span[translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')=\"{text.ToLower()}\"]]|//p[translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')=\"{text.ToLower()}\"])[{index}]"));
         PageElement Link(string text) => new PageElement(_Driver, By.PartialLinkText($"{text}"));
         PageElement PageHeader1_label(string text) => new PageElement(_Driver, By.XPath($"//h1[text()=\"{text}\"]"));
         PageElement PageHeader2_label(string text) => new PageElement(_Driver, By.XPath($"//h2[translate(text(), " +
