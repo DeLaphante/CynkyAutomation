@@ -18,7 +18,7 @@ namespace CynkyAutomation.PageObjects.CommonPages
 
         PageElement AcceptCookie_button => new PageElement(_Driver, By.Id("consent_prompt_submit"));
         PageElement NavigateTo(string page) => new PageElement(_Driver, By.PartialLinkText($"{page}"));
-        PageElement Button(string text, int index) => new PageElement(_Driver, By.XPath($"(//*[translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')= \"{text.ToLower()}\" and not(self::span and count(../span) >1)]//ancestor::*[(self::button or self::a or @onclick or @role='button') and not(contains(@class,'banner') or contains(@class,'disable') or @disabled)])[{index}]"));
+        protected PageElement Button(string text, int index = 1) => new PageElement(_Driver, By.XPath($"(//*[translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')= \"{text.ToLower()}\"]//ancestor::*[(self::button or self::a or @onclick or @role='button') and not(contains(@class,'banner') or contains(@class,'disable') or @disabled)])[{index}]"));
         PageElement Link(string text) => new PageElement(_Driver, By.PartialLinkText($"{text}"));
         PageElement PageHeader1_label(string text) => new PageElement(_Driver, By.XPath($"//h1[text()=\"{text}\"]"));
         PageElement PageHeader2_label(string text) => new PageElement(_Driver, By.XPath($"//h2[translate(text(), " +

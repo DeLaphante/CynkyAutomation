@@ -1,5 +1,4 @@
 ﻿using CynkyAutomation.PageObjects.CommonPages;
-using CynkyDriver;
 using OpenQA.Selenium;
 
 namespace CynkyAutomation.PageObjects.OrangeHRM
@@ -9,8 +8,6 @@ namespace CynkyAutomation.PageObjects.OrangeHRM
         public SideNavBar(IWebDriver driver) : base(driver) { }
 
         #region Locators
-
-        PageElement Option_link(string text) => new PageElement(_Driver, By.XPath($"//a[contains(.,\"{text}\")]"));
 
         #endregion
 
@@ -23,7 +20,7 @@ namespace CynkyAutomation.PageObjects.OrangeHRM
 
         public bool IsOptionDisplayed(string text)
         {
-            return Option_link(text).IsDisplayed();
+            return Button(text).IsDisplayed();
         }
 
         #endregion
