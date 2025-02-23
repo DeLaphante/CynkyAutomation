@@ -7,10 +7,6 @@ namespace CynkyAutomation.PageObjects.OrangeHRM
     {
         public SideNavBar(IWebDriver driver) : base(driver) { }
 
-        #region Locators
-
-        #endregion
-
         #region Actions
 
         public void ClickOnOption(string option)
