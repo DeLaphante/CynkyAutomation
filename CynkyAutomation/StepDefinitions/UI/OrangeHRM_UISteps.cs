@@ -1,8 +1,8 @@
 using CynkyAutomation.Models.UI;
 using CynkyAutomation.PageObjects.OrangeHRM;
 using FluentAssertions;
-using System.Diagnostics;
 using Reqnroll;
+using System.Diagnostics;
 
 namespace CynkyAutomation.StepDefinitions.UI
 {

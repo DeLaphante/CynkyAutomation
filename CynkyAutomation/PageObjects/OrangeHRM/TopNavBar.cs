@@ -12,7 +12,6 @@ namespace CynkyAutomation.PageObjects.OrangeHRM
 
         PageElement Menu_dropdown => new PageElement(_Driver, By.XPath($"//li//p"));
         PageElement Header_label => new PageElement(_Driver, By.XPath($"//h6"));
-        PageElement Option_link(string text) => new PageElement(_Driver, By.XPath($"//a[text()=\"{text}\"]"));
 
         #endregion
 
@@ -21,7 +20,7 @@ namespace CynkyAutomation.PageObjects.OrangeHRM
         public void ClickOnMenuOption(string option)
         {
             Menu_dropdown.Click();
-            Option_link(option).Click();
+            ClickButton(option);
         }
 
         public string GetHeader()

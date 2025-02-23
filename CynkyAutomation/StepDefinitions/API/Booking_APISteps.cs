@@ -4,9 +4,9 @@ using CynkyAutomation.Models.API.Request;
 using CynkyAutomation.Models.API.Response;
 using CynkyHttp;
 using FluentAssertions;
+using Reqnroll;
 using System.Collections.Generic;
 using System.Net;
-using Reqnroll;
 
 namespace CynkyAutomation.StepDefinitions.API
 {
