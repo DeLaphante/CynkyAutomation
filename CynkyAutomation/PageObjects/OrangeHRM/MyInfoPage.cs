@@ -19,6 +19,7 @@ namespace CynkyAutomation.PageObjects.OrangeHRM
 
         public void UpdateInfo(PersonalDetails personalDetails)
         {
+            InputField_textbox("firstName").Click();
             InputField_textbox("firstName").SendKeys(personalDetails.Firstname);
             ClickButton("Save");
         }
