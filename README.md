@@ -1,7 +1,7 @@
 # CynkyAutomation
 [![CodeQL](https://github.com/DeLaphante/CynkyAutomation/actions/workflows/codeql.yml/badge.svg)](https://github.com/DeLaphante/CynkyAutomation/actions/workflows/codeql.yml) [![Pipeline Tests](https://github.com/DeLaphante/CynkyAutomation/actions/workflows/dotnet.yml/badge.svg?event=schedule)](https://github.com/DeLaphante/CynkyAutomation/actions/workflows/dotnet.yml)
 
-Powered by Selenium, Reqnroll and ML.Net with detailed HTML Reporting, Machine Learning Analysis, Automatic Waiting & Logging capabilities - CynkyAutomation framework can handle any website that is built using AJAX, React, AngularJS, Vue.js, Single Page Applications, Salesforce, Dynamics 365 CRM and many more. 
+Powered by Selenium and Reqnroll with detailed HTML reporting and Logging capabilities - CynkyAutomation framework can handle any website that is built using AJAX, React, AngularJS, Vue.js, Single Page Applications, Salesforce, Dynamics 365 CRM and many more. 
 
 Eliminate all flaky tests and completely avoid test reruns by using this framework within your CI/CD pipeline!
 
@@ -19,7 +19,7 @@ https://github.com/DeLaphante/CynkyAutomation/assets/6398105/eca80a12-6def-43ed-
 
 *** Components ***
 - CynkyDriver (Selenium Engine)
-- CynkyAnalysis (Machine Learning Engine)
+- CynkyAnalysis (CSV Test Failure Extraction)
 - CynkyHook (Configuration Engine)
 - CynkyHttp (API Engine)
 - CynkyReports (Reports Engine)
@@ -30,8 +30,8 @@ https://github.com/DeLaphante/CynkyAutomation/assets/6398105/eca80a12-6def-43ed-
 - Dependency Injection (IoC container)
 - Scalable & Parallel Execution
 - UI browser & API logs
-- A.I Machine learning Analysis of failures
-- Zephyr Scale Integration
+- Sanitized Csv file of all failures
+- Zephyr Integration
 - BrowserStack & SaucLabs Integration
 - Mobile Web Automation configuration
 
@@ -49,7 +49,6 @@ https://github.com/DeLaphante/CynkyAutomation/assets/6398105/eca80a12-6def-43ed-
 - Creating robust Xpath expressions for element locators and regular expressions
 - Cron schedule expressions
 - Debugging and troubleshooting C# code or CI/CD pipeline issues
-- Updating 'CynkyModel' to improve Machine Learning analysis of test failures
 - Any other technical issue you believe you need help with
 - 50% Refund if technical issue could not be resolved
 
