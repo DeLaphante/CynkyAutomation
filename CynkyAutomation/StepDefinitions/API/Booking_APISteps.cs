@@ -28,8 +28,8 @@ namespace CynkyAutomation.StepDefinitions.API
             var json = new AuthRequest { password = "password123", username = "admin" };
 
             _CynkyClient.SendRequest(Method.POST, BookingEndpointBuilder.GetAuthEndPoint(), json);
-            _CynkyClient.GetResponseBody<AuthResponse>().token.Should().NotBeNullOrEmpty();
-            _ScenarioContext.Set<string>(_CynkyClient.GetResponseBody<AuthResponse>().token, "token");
+            _CynkyClient.GetJsonResponseBody<AuthResponse>().token.Should().NotBeNullOrEmpty();
+            _ScenarioContext.Set<string>(_CynkyClient.GetJsonResponseBody<AuthResponse>().token, "token");
         }
 
         [StepDefinition(@"a get request is made to the booking endpoint")]
@@ -42,8 +42,8 @@ namespace CynkyAutomation.StepDefinitions.API
         public void ThenTheResponseShouldContainAListOfBookingIds()
         {
             _CynkyClient.GetStatusCode().Should().Be(HttpStatusCode.OK);
-            _CynkyClient.GetResponseBody<List<GetBookingIdsResponse>>().Should().NotBeNullOrEmpty();
-            _ScenarioContext.Set<int>(_CynkyClient.GetResponseBody<List<GetBookingIdsResponse>>().Count, "numberOfIds");
+            _CynkyClient.GetJsonResponseBody<List<GetBookingIdsResponse>>().Should().NotBeNullOrEmpty();
+            _ScenarioContext.Set<int>(_CynkyClient.GetJsonResponseBody<List<GetBookingIdsResponse>>().Count, "numberOfIds");
         }
 
         [StepDefinition(@"a post request is made to the create booking endpoint")]
@@ -55,7 +55,7 @@ namespace CynkyAutomation.StepDefinitions.API
 
             _CynkyClient.SendRequest(Method.POST, BookingEndpointBuilder.GetBookingEndPoint(), json);
 
-            var createBookingResponse = _CynkyClient.GetResponseBody<CreateBookingResponse>();
+            var createBookingResponse = _CynkyClient.GetJsonResponseBody<CreateBookingResponse>();
 
             _ScenarioContext.Set<int>(createBookingResponse.bookingid, "bookingid");
         }
