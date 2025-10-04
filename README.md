@@ -10,7 +10,7 @@ This framework can be run on MacOs, Linux or Windows - Just clone or download th
 https://user-images.githubusercontent.com/6398105/216404819-96bdade9-3455-4105-a2b2-f218e37574fd.mp4
 
 
-See working examples of other automated sites and api services using CynkyAutomation -> [1CrmCloud](https://github.com/DeLaphante/1CrmCloud) - [LumaShopping](https://github.com/DeLaphante/LumaShopping) - [GoogleYouTube](https://github.com/DeLaphante/GoogleYouTube) - [CurrencyCloud](https://github.com/DeLaphante/CurrencyCloud) 
+See working examples of other automated sites and api services using CynkyAutomation -> [1CrmCloud](https://github.com/DeLaphante/1CrmCloud) - [LumaShopping](https://github.com/DeLaphante/LumaShopping) - [GoogleYouTube](https://github.com/DeLaphante/GoogleYouTube) - [CurrencyCloud](https://github.com/DeLaphante/CurrencyCloud) - [PurgoMalum](https://github.com/DeLaphante/PurgoMalum)
 
 
 https://github.com/DeLaphante/CynkyAutomation/assets/6398105/eca80a12-6def-43ed-99d4-776dd8531d36
