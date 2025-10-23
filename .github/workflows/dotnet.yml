@@ -22,6 +22,19 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
+        
+    - name: Cache APT packages
+      uses: actions/cache@v4
+      with:
+          path: /var/cache/apt/archives
+          key: ${{ runner.os }}-apt-${{ hashFiles('/etc/apt/sources.list', '/etc/apt/sources.list.d/*.list') }}
+          restore-keys: |
+            ${{ runner.os }}-apt-
+
+    - name: Install FFmpeg and dependencies
+      run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg mesa-va-drivers mesa-vdpau-drivers
     
     - name: Cache NuGet packages
       id: cache-nuget
