@@ -1,11 +1,8 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
-
 name: Pipeline Tests
 
 on:
   schedule:
-    - cron:  '35 5 * * *'
+    - cron: '35 5 * * *'
   push:
     branches: [ "master" ]
   pull_request:
@@ -26,15 +23,15 @@ jobs:
     - name: Cache APT packages
       uses: actions/cache@v4
       with:
-          path: /var/cache/apt/archives
-          key: ${{ runner.os }}-apt-${{ hashFiles('/etc/apt/sources.list', '/etc/apt/sources.list.d/*.list') }}
-          restore-keys: |
-            ${{ runner.os }}-apt-
+        path: /var/cache/apt/archives
+        key: ${{ runner.os }}-apt-${{ hashFiles('/etc/apt/sources.list', '/etc/apt/sources.list.d/*.list') }}
+        restore-keys: |
+          ${{ runner.os }}-apt-
 
     - name: Install FFmpeg and dependencies
       run: |
-          sudo apt-get update
-          sudo apt-get install -y ffmpeg mesa-va-drivers mesa-vdpau-drivers
+        sudo apt-get update
+        sudo apt-get install -y ffmpeg mesa-va-drivers mesa-vdpau-drivers
     
     - name: Cache NuGet packages
       id: cache-nuget
@@ -49,11 +46,11 @@ jobs:
       uses: actions/cache@v4
       with:
         path: |
-            **/bin
-            **/obj
+          **/bin
+          **/obj
         key: build-${{ runner.os }}-${{ hashFiles('**/*.csproj') }}
         restore-keys: |
-            build-${{ runner.os }}-
+          build-${{ runner.os }}-
             
     - name: Restore dependencies
       run: dotnet restore --use-current-runtime
@@ -61,11 +58,11 @@ jobs:
     - name: Check if build output is cached
       id: build-cache-check
       run: |
-          if [ -d "/home/runner/work/CynkyAutomation/CynkyAutomation/CynkyAutomation/bin/Release" ]; then
-              echo "build=false" >> $GITHUB_ENV
-          else
-            echo "build=true" >> $GITHUB_ENV
-          fi
+        if [ -d "/home/runner/work/CynkyAutomation/CynkyAutomation/CynkyAutomation/bin/Release" ]; then
+          echo "build=false" >> $GITHUB_ENV
+        else
+          echo "build=true" >> $GITHUB_ENV
+        fi
 
     - name: Build
       if: env.build == 'true'
@@ -74,14 +71,26 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal --configuration Release
 
-    - uses: actions/upload-artifact@v4
+    # 🔍 Debug step: list test output directories
+    - name: Debug output files
       if: always()
+      run: |
+        echo "Listing /bin/Release/net8.0 contents:"
+        ls -R /home/runner/work/CynkyAutomation/CynkyAutomation/CynkyAutomation/bin/Release/net8.0 || true
+        echo "Listing TestResults (if exists):"
+        ls -R /home/runner/work/CynkyAutomation/CynkyAutomation/CynkyAutomation/TestResults || true
+
+    # ✅ Safer artifact upload (no tar exit code 2)
+    - name: Upload Reports
+      if: always() && hashFiles('**/Reports/**') != ''
+      uses: actions/upload-artifact@v4
       with: 
         name: Reports
-        path: /home/runner/work/CynkyAutomation/CynkyAutomation/CynkyAutomation/bin/Release/net8.0/Reports
+        path: '**/Reports/**'
 
-    - uses: actions/upload-artifact@v4
+    - name: Upload Data
+      if: always() && hashFiles('**/Data/**') != ''
+      uses: actions/upload-artifact@v4
       with: 
         name: Data
-        path: /home/runner/work/CynkyAutomation/CynkyAutomation/CynkyAutomation/bin/Release/net8.0/Data
-
+        path: '**/Data/**'
