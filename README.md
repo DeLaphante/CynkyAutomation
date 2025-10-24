@@ -52,4 +52,4 @@ https://github.com/DeLaphante/CynkyAutomation/assets/6398105/eca80a12-6def-43ed-
 - Any other technical issue you believe you need help with
 - 50% Refund if technical issue could not be resolved
 
-Click on this link to request Technical Support ->  https://linktr.ee/cynkyautomation
+Click on this link to request Technical Support ->  [https://linktr.ee/delaphante.solution](https://linktr.ee/delaphante.solutions)
