@@ -71,26 +71,14 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal --configuration Release
 
-    # 🔍 Debug step: list test output directories
-    - name: Debug output files
+    - uses: actions/upload-artifact@v4
       if: always()
-      run: |
-        echo "Listing /bin/Release/net8.0 contents:"
-        ls -R /home/runner/work/CynkyAutomation/CynkyAutomation/CynkyAutomation/bin/Release/net8.0 || true
-        echo "Listing TestResults (if exists):"
-        ls -R /home/runner/work/CynkyAutomation/CynkyAutomation/CynkyAutomation/TestResults || true
-
-    # ✅ Safer artifact upload (no tar exit code 2)
-    - name: Upload Reports
-      if: always() && hashFiles('**/Reports/**') != ''
-      uses: actions/upload-artifact@v4
       with: 
         name: Reports
-        path: '**/Reports/**'
+        path: /home/runner/work/CynkyAutomation/CynkyAutomation/CynkyAutomation/bin/Release/net8.0/Reports
 
-    - name: Upload Data
-      if: always() && hashFiles('**/Data/**') != ''
-      uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v4
+      if: always()
       with: 
         name: Data
-        path: '**/Data/**'
+        path: /home/runner/work/CynkyAutomation/CynkyAutomation/CynkyAutomation/bin/Release/net8.0/Data
