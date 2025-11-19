@@ -74,3 +74,40 @@ jobs:
       with: 
         name: Data
         path: /home/runner/work/CynkyAutomation/CynkyAutomation/CynkyAutomation/bin/Release/net8.0/Data
+
+  Publish:
+    needs: Test
+    if: always()  
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Download Reports artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: Reports
+          path: ./public
+
+      - name: Rename report HTML to index.html
+        run: |
+          if ls ./public/Results/*.html 1> /dev/null 2>&1; then
+            file=$(ls ./public/Results/*.html | head -n 1)
+            mv "$file" ./public/index.html
+          fi
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Show GitHub Pages URL
+        run: echo "🚀 Report published at ${{ steps.deployment.outputs.page_url }}"
+
