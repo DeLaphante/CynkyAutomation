@@ -102,19 +102,42 @@ jobs:
         name: Data
         path: ./public/Data
 
-    # MOVE VIDEOS TO ROOT FOR DIRECT URL ACCESS
-    - name: Move Videos to /Videos/ root folder
+    - name: Debug - show downloaded ./public tree
       run: |
-        if [ -d "./public/Results/Videos" ]; then
-          mkdir -p ./public/Videos
-          cp -r ./public/Results/Videos/* ./public/Videos/
+        echo "=== top-level ./public ==="
+        ls -la ./public || true
+        echo "=== recursive listing (dirs) ==="
+        find ./public -type d -print || true
+        echo "=== recursive listing (files) ==="
+        find ./public -type f -printf '%p (%s bytes)\n' || true
+
+    - name: Collect video files into ./public/Videos for root URLs
+      run: |
+        mkdir -p ./public/Videos
+        echo "Searching for video files under ./public..."
+        files_found=false
+        while IFS= read -r file; do
+          echo "Copying: $file"
+          cp "$file" ./public/Videos/ || echo "FAILED to copy $file"
+          files_found=true
+        done < <(find ./public -type f \( -iname '*.mp4' -o -iname '*.webm' -o -iname '*.mov' -o -iname '*.ogg' \) -print)
+        if [ "$files_found" = false ]; then
+          echo "No video files found under ./public (no copy performed)."
         fi
 
-    - name: Rename first HTML report to index.html
+    - name: Rename first HTML report to index.html (searches Results or anywhere)
       run: |
-        if ls ./public/Results/*.html 1> /dev/null 2>&1; then
-          file=$(ls ./public/Results/*.html | head -n 1)
-          mv "$file" ./public/index.html
+        # Prefer HTML inside any Results folder
+        html=$(find ./public -type f -path '*/Results/*.html' 2>/dev/null | head -n 1 || true)
+        if [ -z "$html" ]; then
+          # fallback: any HTML under public
+          html=$(find ./public -type f -iname '*.html' 2>/dev/null | head -n 1 || true)
+        fi
+        if [ -n "$html" ]; then
+          echo "Found HTML to use as index: $html"
+          mv "$html" ./public/index.html
+        else
+          echo "No HTML file found to rename to index.html"
         fi
 
     - name: Setup Pages
