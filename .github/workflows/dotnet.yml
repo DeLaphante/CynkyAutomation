@@ -102,8 +102,13 @@ jobs:
         name: Data
         path: ./public/Data
 
-    - name: Ensure Videos folder exists
-      run: mkdir -p ./public/Results/Videos
+    # MOVE VIDEOS TO ROOT FOR DIRECT URL ACCESS
+    - name: Move Videos to /Videos/ root folder
+      run: |
+        if [ -d "./public/Results/Videos" ]; then
+          mkdir -p ./public/Videos
+          cp -r ./public/Results/Videos/* ./public/Videos/
+        fi
 
     - name: Rename first HTML report to index.html
       run: |
