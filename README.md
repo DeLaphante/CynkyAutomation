@@ -15,7 +15,12 @@ See working examples of other automated sites and api services using CynkyAutoma
 
 https://github.com/DeLaphante/CynkyAutomation/assets/6398105/eca80a12-6def-43ed-99d4-776dd8531d36
 
+### Retrieving Report 
+**From GitHub Pages**
 
+   * The latest HTML report is published to GitHub Pages.
+   * Visit:
+     [https://delaphante.github.io/CynkyAutomation/](https://delaphante.github.io/CynkyAutomation/)
 
 *** Components ***
 - CynkyDriver (Selenium Engine)
