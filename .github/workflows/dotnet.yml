@@ -1,15 +1,17 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
-
 name: Pipeline Tests
 
 on:
   schedule:
-    - cron:  '35 5 * * *'
+    - cron: '35 5 * * *'
   push:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+    
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 
 jobs:
   Test:
@@ -22,19 +24,11 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
-        
-    - name: Cache APT packages
-      uses: actions/cache@v4
-      with:
-          path: /var/cache/apt/archives
-          key: ${{ runner.os }}-apt-${{ hashFiles('/etc/apt/sources.list', '/etc/apt/sources.list.d/*.list') }}
-          restore-keys: |
-            ${{ runner.os }}-apt-
 
     - name: Install FFmpeg and dependencies
       run: |
-          sudo apt-get update
-          sudo apt-get install -y ffmpeg mesa-va-drivers mesa-vdpau-drivers
+        sudo apt-get update
+        sudo apt-get install -y ffmpeg mesa-va-drivers mesa-vdpau-drivers
     
     - name: Cache NuGet packages
       id: cache-nuget
@@ -49,11 +43,11 @@ jobs:
       uses: actions/cache@v4
       with:
         path: |
-            **/bin
-            **/obj
+          **/bin
+          **/obj
         key: build-${{ runner.os }}-${{ hashFiles('**/*.csproj') }}
         restore-keys: |
-            build-${{ runner.os }}-
+          build-${{ runner.os }}-
             
     - name: Restore dependencies
       run: dotnet restore --use-current-runtime
@@ -61,11 +55,11 @@ jobs:
     - name: Check if build output is cached
       id: build-cache-check
       run: |
-          if [ -d "/home/runner/work/CynkyAutomation/CynkyAutomation/CynkyAutomation/bin/Release" ]; then
-              echo "build=false" >> $GITHUB_ENV
-          else
-            echo "build=true" >> $GITHUB_ENV
-          fi
+        if [ -d "/home/runner/work/CynkyAutomation/CynkyAutomation/CynkyAutomation/bin/Release" ]; then
+          echo "build=false" >> $GITHUB_ENV
+        else
+          echo "build=true" >> $GITHUB_ENV
+        fi
 
     - name: Build
       if: env.build == 'true'
@@ -81,7 +75,82 @@ jobs:
         path: /home/runner/work/CynkyAutomation/CynkyAutomation/CynkyAutomation/bin/Release/net8.0/Reports
 
     - uses: actions/upload-artifact@v4
+      if: always()
       with: 
         name: Data
         path: /home/runner/work/CynkyAutomation/CynkyAutomation/CynkyAutomation/bin/Release/net8.0/Data
 
+
+  Publish:
+    needs: Test
+    if: always()
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Download Reports artifact (HTML + Videos)
+      uses: actions/download-artifact@v4
+      with:
+        name: Reports
+        path: ./public
+
+    - name: Download Data artifact (optional)
+      uses: actions/download-artifact@v4
+      with:
+        name: Data
+        path: ./public/Data
+
+    - name: Debug - show downloaded ./public tree
+      run: |
+        echo "=== top-level ./public ==="
+        ls -la ./public || true
+        echo "=== recursive listing (dirs) ==="
+        find ./public -type d -print || true
+        echo "=== recursive listing (files) ==="
+        find ./public -type f -printf '%p (%s bytes)\n' || true
+
+    - name: Collect video files into ./public/Videos for root URLs
+      run: |
+        mkdir -p ./public/Videos
+        echo "Searching for video files under ./public..."
+        files_found=false
+        while IFS= read -r file; do
+          echo "Copying: $file"
+          cp "$file" ./public/Videos/ || echo "FAILED to copy $file"
+          files_found=true
+        done < <(find ./public -type f \( -iname '*.mp4' -o -iname '*.webm' -o -iname '*.mov' -o -iname '*.ogg' \) -print)
+        if [ "$files_found" = false ]; then
+          echo "No video files found under ./public (no copy performed)."
+        fi
+
+    - name: Rename first HTML report to index.html (searches Results or anywhere)
+      run: |
+        # Prefer HTML inside any Results folder
+        html=$(find ./public -type f -path '*/Results/*.html' 2>/dev/null | head -n 1 || true)
+        if [ -z "$html" ]; then
+          # fallback: any HTML under public
+          html=$(find ./public -type f -iname '*.html' 2>/dev/null | head -n 1 || true)
+        fi
+        if [ -n "$html" ]; then
+          echo "Found HTML to use as index: $html"
+          mv "$html" ./public/index.html
+        else
+          echo "No HTML file found to rename to index.html"
+        fi
+
+    - name: Setup Pages
+      uses: actions/configure-pages@v5
+
+    - name: Upload Pages artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: ./public
+
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
+
+    - name: Show GitHub Pages URL
+      run: echo "🚀 Report published at ${{ steps.deployment.outputs.page_url }}"
