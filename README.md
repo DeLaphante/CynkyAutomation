@@ -42,13 +42,15 @@ https://github.com/DeLaphante/CynkyAutomation/assets/6398105/eca80a12-6def-43ed-
 
 *** Documentation? ***
  - Explore the framework yourself freely through trial & error 
- - Or subscribe to join the *Elite Test Automation Club* for technical support below
+ - Or subscribe to join the **Elite Test Automation Club** for technical support below
  
 *** Elite Test Automation Club ***
+
 Join & subscribe to a club where you can ask questions and discover advanced techniques shared by others.
 - Tackle test automation challenges and get them reviewed with improvements
 - Recieve help with creating robust Xpath expressions for element locators or regular expressions
 - Debugging and troubleshooting code or CI/CD pipeline issues
 - Get technical support on how to use the CynkyAutomation framework
 - Inquire any other technical issues you believe may help you
+
 Click on this link to join ->  [Elite Test Automation Club](https://buy.stripe.com/bJecN5fpV64t8uagVCaZi0a)
