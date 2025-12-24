@@ -42,19 +42,13 @@ https://github.com/DeLaphante/CynkyAutomation/assets/6398105/eca80a12-6def-43ed-
 
 *** Documentation? ***
  - Explore the framework yourself freely through trial & error 
- - Or request technical support below
+ - Or subscribe to join the *Elite Test Automation Club* for technical support below
  
- 
-*** 2 hours Technical Support (One time) ***
-
-*** 2 hours (per day) Technical Support (Weekly) ***
-- Remote Conference Call (Zoom) : Mon - Sun : 6pm - 10pm
-- Select the available day or days you need support
-- Help with configuration, code structure & setup 
-- Creating robust Xpath expressions for element locators and regular expressions
-- Cron schedule expressions
-- Debugging and troubleshooting C# code or CI/CD pipeline issues
-- Any other technical issue you believe you need help with
-- 50% Refund if technical issue could not be resolved
-
-Click on this link to request Technical Support ->  [https://linktr.ee/delaphante.solutions](https://linktr.ee/delaphante.solutions)
+*** Elite Test Automation Club ***
+Join & subscribe to a club where you can ask questions and discover advanced techniques shared by others.
+- Tackle test automation challenges and get them reviewed with improvements
+- Recieve help with creating robust Xpath expressions for element locators or regular expressions
+- Debugging and troubleshooting code or CI/CD pipeline issues
+- Get technical support on how to use the CynkyAutomation framework
+- Inquire any other technical issues you believe may help you
+Click on this link to join ->  [Elite Test Automation Club](https://buy.stripe.com/bJecN5fpV64t8uagVCaZi0a)
