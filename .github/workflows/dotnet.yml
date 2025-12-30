@@ -39,15 +39,15 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-nuget-
           
-    - name: Cache .NET build output
-      uses: actions/cache@v4
-      with:
-        path: |
-          **/bin
-          **/obj
-        key: build-${{ runner.os }}-${{ hashFiles('**/*.csproj') }}
-        restore-keys: |
-          build-${{ runner.os }}-
+    # - name: Cache .NET build output
+    #   uses: actions/cache@v4
+    #   with:
+    #     path: |
+    #       **/bin
+    #       **/obj
+    #     key: build-${{ runner.os }}-${{ hashFiles('**/*.csproj') }}
+    #     restore-keys: |
+    #       build-${{ runner.os }}-
             
     - name: Restore dependencies
       run: dotnet restore --use-current-runtime
