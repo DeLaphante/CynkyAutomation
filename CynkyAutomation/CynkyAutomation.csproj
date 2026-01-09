@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     
 
     <IsPackable>false</IsPackable>
@@ -28,7 +28,7 @@
 
   <ItemGroup>
     <PackageReference Include="CsvHelper" Version="33.1.0" />
-    <PackageReference Include="Cynky" Version="2.11.15" />
+    <PackageReference Include="Cynky" Version="2.11.18" />
     <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
     <PackageReference Include="FluentAssertions" Version="8.8.0" />
     <PackageReference Include="HtmlAgilityPack" Version="1.12.4" />
