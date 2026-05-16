@@ -18,10 +18,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
     
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
         dotnet-version: 10.0.x
 
@@ -32,7 +32,7 @@ jobs:
     
     - name: Cache NuGet packages
       id: cache-nuget
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: ~/.nuget/packages
         key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj', '**/*.fsproj') }}
@@ -68,13 +68,13 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal --configuration Release
 
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v6
       if: always()
       with: 
         name: Reports
         path: /home/runner/work/CynkyAutomation/CynkyAutomation/CynkyAutomation/bin/Release/net10.0/Reports
 
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v6
       if: always()
       with: 
         name: Data
@@ -88,7 +88,7 @@ jobs:
 
     steps:
     - name: Checkout repo
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Download Reports artifact (HTML + Videos)
       uses: actions/download-artifact@v4
@@ -97,7 +97,7 @@ jobs:
         path: ./public
 
     - name: Download Data artifact (optional)
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v5
       with:
         name: Data
         path: ./public/Data
