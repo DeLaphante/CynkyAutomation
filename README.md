@@ -22,7 +22,7 @@ https://github.com/DeLaphante/CynkyAutomation/assets/6398105/eca80a12-6def-43ed-
    * Visit:
      [https://delaphante.github.io/CynkyAutomation/](https://delaphante.github.io/CynkyAutomation/)
 
-*** Components ***
+### Components
 - CynkyDriver (Selenium Engine)
 - CynkyAnalysis (CSV Test Failure Extraction)
 - CynkyHook (Configuration Engine)
@@ -40,11 +40,11 @@ https://github.com/DeLaphante/CynkyAutomation/assets/6398105/eca80a12-6def-43ed-
 - BrowserStack & SaucLabs Integration
 - Mobile Web Automation configuration
 
-*** Documentation? ***
+### Documentation
  - Explore the framework yourself freely through trial & error 
  - Or subscribe to join the **Elite Test Automation Club** for technical support below
  
-*** Elite Test Automation Club ***
+### Elite Test Automation Club
 
 Join & subscribe to a club where you can ask questions and discover advanced techniques shared by others.
 - Tackle test automation challenges and get them reviewed with improvements
