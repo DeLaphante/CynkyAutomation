@@ -28,7 +28,7 @@
 
   <ItemGroup>
     <PackageReference Include="CsvHelper" Version="33.1.0" />
-    <PackageReference Include="Cynky" Version="2.12.16" />
+    <PackageReference Include="Cynky" Version="2.12.17" />
     <PackageReference Include="FluentAssertions" Version="8.11.0" />
     <PackageReference Include="HtmlAgilityPack" Version="1.13.1" />
     <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.63.2" />
