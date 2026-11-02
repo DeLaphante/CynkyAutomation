@@ -2,7 +2,8 @@
 
 namespace CynkyAutomation.Models.UI
 {
-    public class Postcodes
+    [CsvRecord]
+    public partial class Postcodes
     {
         [CsvColumn("postcode")]
         public string Postcode { get; set; }
