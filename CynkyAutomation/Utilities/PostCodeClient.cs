@@ -2,7 +2,6 @@
 using CynkyAutomation.Models.UI;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 
@@ -17,8 +16,7 @@ namespace CynkyAutomation.Utilities
 
         public static List<Postcodes> GetUkPostCodes()
         {
-            using (var reader = new StreamReader($"{_testDatafolder}/ukpostcodes.csv"))
-            using (var csv = new CsvReader(reader, CultureInfo.CurrentCulture))
+            using (var csv = CsvReader.FromFile($"{_testDatafolder}/ukpostcodes.csv"))
             {
                 return csv.GetRecords<Postcodes>().ToList();
             }

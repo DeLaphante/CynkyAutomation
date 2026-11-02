@@ -1,10 +1,10 @@
-﻿using CsvHelper.Configuration.Attributes;
+﻿using CsvHelper;
 
 namespace CynkyAutomation.Models.UI
 {
     public class Postcodes
     {
-        [Name("postcode")]
+        [CsvColumn("postcode")]
         public string Postcode { get; set; }
     }
 }
